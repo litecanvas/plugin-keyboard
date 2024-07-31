@@ -1,4 +1,4 @@
-/*! Keyboard plugin for litecanvas v0.1.1 by Luiz Bills | MIT Licensed */
+/*! Keyboard plugin for litecanvas v0.1.2 by Luiz Bills | MIT Licensed */
 window.pluginKeyboard = plugin
 
 /**
@@ -56,7 +56,6 @@ export default function plugin(engine, _, config) {
     if ("function" === typeof config.listeners[eventName]) {
       engine.listen(eventName, config.listeners[eventName], true)
     }
-    console.log(window)
   }
 
   /**
