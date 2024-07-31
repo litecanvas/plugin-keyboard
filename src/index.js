@@ -1,4 +1,4 @@
-/*! Keyboard plugin for litecanvas v0.1.0 by Luiz Bills | MIT Licensed */
+/*! Keyboard plugin for litecanvas v0.1.1 by Luiz Bills | MIT Licensed */
 window.pluginKeyboard = plugin
 
 /**
@@ -29,6 +29,7 @@ export default function plugin(engine, _, config) {
    * @param {KeyboardEvent} ev
    */
   addEventListener("keydown", (ev) => {
+    ev.preventDefault()
     const key = _formatKey(ev.key)
 
     engine.emit("keydown", key, ev)
@@ -40,6 +41,7 @@ export default function plugin(engine, _, config) {
    * @param {KeyboardEvent} ev
    */
   addEventListener("keyup", (ev) => {
+    ev.preventDefault()
     const key = _formatKey(ev.key)
 
     if (_checkPressed(key)) {
