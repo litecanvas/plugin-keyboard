@@ -17,36 +17,6 @@
   <body>
     <script src="https://unpkg.com/litecanvas/dist/dist.js"></script>
     <script src="../dist/dist.js"></script>
-    <script>
-      litecanvas()
-
-      use(pluginKeyboard) // load the plugin
-
-      function init() {
-        color = 0
-        holding = false
-      }
-
-      function update(dt) {
-        if (KEYBOARD.iskeypressed("enter")) {
-          color++
-        }
-
-        holding = KEYBOARD.iskeydown("space")
-
-        if (KB.iskeypressed("escape")) {
-          alert("Escape pressed")
-        }
-
-        if (KB.iskeypressed() || KB.iskeydown()) {
-          document.querySelector("title").innerHTML = ELAPSED
-        }
-      }
-
-      function draw() {
-        cls(color)
-        text(10, 10, "HOLDING: " + (holding ? "YES" : "NO"))
-      }
-    </script>
+    <script src="demo.js" type="module"></script>
   </body>
 </html>
