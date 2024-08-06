@@ -1,4 +1,4 @@
-/*! Keyboard plugin for litecanvas v0.2.0 by Luiz Bills | MIT Licensed */
+/*! Keyboard plugin for litecanvas v0.2.1 by Luiz Bills | MIT Licensed */
 window.pluginKeyboard = plugin
 
 /**
