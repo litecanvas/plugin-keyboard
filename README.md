@@ -63,3 +63,34 @@ function keypress(key) {
 ```
 
 _See in [playground](https://litecanvas.js.org?c=eJyVk02P0zAQhu%2F5FYMv66ilWeitKHwIql2g2h56QBxdZ5qYJLbxR0u16n9f28luW8SFSHEynpln5nUmRQE%2FsOOqR3AKOuGQM7lnFnTHjrVRXlavsqKAFTIjoVcmxDGthaxBSXANwm%2BP1olg9My0wLZqj7OY8U0JCcobqITlylQQivReCndcRHfjnLaLohi9s%2BAthNyHBgrzls%2FNnd3fz7NzQ%2FQxA%2BiU0gt4BBEwU6gMO8Bpmp3yLNt5yVMX0UVzGKJZteFGaEeDBXDzXNNL3dap4sdzgUJ3vhbydYvHrWKmip25tMx%2B2ZtpIlDV5lC%2BT%2FR4id2w5S3SIf37mJ1Hd4o6hTXPksFVpwyUcBveG9VV8RRL2LHOYna60BCFjRpihdX605evD3c5GHTeyHeR1FmaaJHs8I%2Bjb26nEG9yv17F6AUQmAB9LvMByM%2FlhkDYfliTfDr2MoF5flU6qK%2FUQdLwPDdArGYcCZRlCS%2BOSwnOeMyi1L9QXv8naDiLf5C0QWvPMHsQjjdALyBhplIQoHRo4jTzhska05BuGW%2BHaR6EpwzOLAJJ4WQxftHknUxGa2uQtdk1frn5HOFhMOIvAgz6sMtqvERazjS%2BMFmHxlGyTLsDBSuSX9UYJD8BJlYVKQ%3D%3D)_.
+
+### Methods
+
+There is also a method `iskeydown(key: string): boolean` that returns `true` when a key is down.
+
+```js
+import litecanvas from "litecanvas"
+import pluginKeyboard from "@litecanvas/plugin-keyboard"
+
+let x = 0
+
+litecanvas({
+  loop: { init, draw },
+})
+
+// just load the plugin
+// without listeners
+use(pluginKeyboard)
+
+function update(dt) {
+  // move to right when arrow right is down
+  if (iskeydown('right')) {
+    x += 100 * dt // move at 100px/s
+  }
+}
+
+function draw() {
+  cls(0)
+  rect(x, 0, 20, 20, 3);
+}
+```

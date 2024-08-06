@@ -1,4 +1,4 @@
-/*! Keyboard plugin for litecanvas v0.1.2 by Luiz Bills | MIT Licensed */
+/*! Keyboard plugin for litecanvas v0.2.0 by Luiz Bills | MIT Licensed */
 window.pluginKeyboard = plugin
 
 /**
@@ -35,6 +35,7 @@ export default function plugin(engine, _, config) {
     engine.emit("keydown", key, ev)
 
     keyDownList.set(key, time())
+    console.log(key)
   })
 
   /**
@@ -76,5 +77,15 @@ export default function plugin(engine, _, config) {
 
   function _checkPressed(key) {
     return keyDownList.has(key) && time() - keyDownList.get(key) <= 200
+  }
+
+  return {
+    /**
+     * @param {string} key
+     * @returns {boolean}
+     */
+    iskeydown(key) {
+      return keyDownList.has(key)
+    },
   }
 }
