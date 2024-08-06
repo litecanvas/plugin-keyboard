@@ -35,7 +35,6 @@ export default function plugin(engine, _, config) {
     engine.emit("keydown", key, ev)
 
     keyDownList.set(key, time())
-    console.log(key)
   })
 
   /**
