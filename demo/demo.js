@@ -6,6 +6,7 @@ litecanvas({
 
 // load the plugin
 use(pluginKeyboard, {
+  preventDefault: false,
   listeners: { keyup, keydown, keypress },
 })
 

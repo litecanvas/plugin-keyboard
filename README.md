@@ -84,13 +84,30 @@ use(pluginKeyboard)
 
 function update(dt) {
   // move to right when arrow right is down
-  if (iskeydown('right')) {
+  if (iskeydown("right")) {
     x += 100 * dt // move at 100px/s
   }
 }
 
 function draw() {
   cls(0)
-  rect(x, 0, 20, 20, 3);
+  rect(x, 0, 20, 20, 3)
 }
+```
+
+## Configuration
+
+```ts
+use(pluginKeyboard, {
+  // If `true` automatically calls the Event#preventDefault
+  // see: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+  preventDefault: boolean, // default: `true`
+
+  // The keyboard event listeners
+  listeners: {
+    keyup: (key: string, ev: KeyboardEvent): void, // default: window.keyup (if exists)
+    keydown: (key: string, ev: KeyboardEvent): void,  // default: window.keydown (if exists)
+    keypress: (key: string, ev: KeyboardEvent): void,  // default: window.keypress (if exists)
+  }
+})
 ```
