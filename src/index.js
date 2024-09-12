@@ -55,7 +55,7 @@ export default function plugin(engine, _, config) {
 
   for (const eventName of events) {
     if ("function" === typeof config.listeners[eventName]) {
-      engine.listen(eventName, config.listeners[eventName], true)
+      engine.listen("before:" + eventName, config.listeners[eventName])
     }
   }
 
