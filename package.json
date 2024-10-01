@@ -1,6 +1,6 @@
 {
   "name": "@litecanvas/plugin-keyboard",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Plugin to handle keyboard events in litecanvas games.",
   "author": "Luiz Bills <luizbills@pm.me>",
   "license": "MIT",
@@ -18,8 +18,8 @@
     "keyboard"
   ],
   "scripts": {
-    "dev": "esbuild src/index.js --bundle --watch --outfile=dist/dist.js --servedir=.",
-    "build": "esbuild src/index.js --bundle --minify --outfile=dist/dist.js",
+    "dev": "esbuild src/web.js --bundle --watch --outfile=dist/dist.js --servedir=.",
+    "build": "esbuild src/web.js --bundle --minify --outfile=dist/dist.js",
     "prepare": "npm run build"
   },
   "devDependencies": {

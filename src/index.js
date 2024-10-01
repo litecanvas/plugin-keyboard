@@ -1,6 +1,3 @@
-/*! Keyboard plugin for litecanvas v0.3.0 by Luiz Bills | MIT Licensed */
-window.pluginKeyboard = plugin
-
 /**
  * @param {LitecanvasInstance} engine
  * @param {LitecanvasPluginHelpers} _
@@ -14,11 +11,11 @@ export default function plugin(engine, _, config) {
       preventDefault: true,
       listeners: {
         /** @type {null|(key: string, ev:KeyboardEvent) => void} */
-        keydown: window.keydown,
+        keydown: globalThis.keydown,
         /** @type {null|(key: string, ev:KeyboardEvent) => void} */
-        keyup: window.keyup,
+        keyup: globalThis.keyup,
         /** @type {null|(key: string, ev:KeyboardEvent) => void} */
-        keypress: window.keypress,
+        keypress: globalThis.keypress,
       },
     },
     events = ["keydown", "keyup", "keypress"],
@@ -31,7 +28,7 @@ export default function plugin(engine, _, config) {
    */
   addEventListener("keydown", (ev) => {
     if (config.preventDefault) ev.preventDefault()
-    const key = _formatKey(ev.key)
+    const key = ev.key.toLowerCase()
 
     engine.emit("keydown", key, ev)
 
@@ -43,7 +40,7 @@ export default function plugin(engine, _, config) {
    */
   addEventListener("keyup", (ev) => {
     if (config.preventDefault) ev.preventDefault()
-    const key = _formatKey(ev.key)
+    const key = ev.key.toLowerCase()
 
     if (_checkPressed(key)) {
       engine.emit("keypress", key, ev)
@@ -54,38 +51,12 @@ export default function plugin(engine, _, config) {
   })
 
   for (const eventName of events) {
-    if ("function" === typeof config.listeners[eventName]) {
-      engine.listen("before:" + eventName, config.listeners[eventName])
+    if (config.listeners[eventName]) {
+      engine.listen(eventName, config.listeners[eventName])
     }
-  }
-
-  /**
-   * @param {string} key
-   * @returns {string}
-   */
-  function _formatKey(key) {
-    key = key.toLowerCase()
-
-    if (key.startsWith("arrow")) {
-      key = key.replace("arrow", "")
-    } else if (" " === key) {
-      key = "space"
-    }
-
-    return key
   }
 
   function _checkPressed(key) {
     return keyDownList.has(key) && time() - keyDownList.get(key) <= 200
-  }
-
-  return {
-    /**
-     * @param {string} key
-     * @returns {boolean}
-     */
-    iskeydown(key) {
-      return keyDownList.has(key)
-    },
   }
 }

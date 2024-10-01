@@ -1,0 +1,6 @@
+export const ARROW_UP = "arrowup"
+export const ARROW_DOWN = "arrowdown"
+export const ARROW_LEFT = "arrowleft"
+export const ARROW_RIGHT = "arrowright"
+export const SPACE = " "
+export const ESC = "escape"

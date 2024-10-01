@@ -1,13 +1,13 @@
 let color, holding, x
 
 litecanvas({
-  loop: { init, update, draw },
+  loop: { init, draw },
 })
 
 // load the plugin
 use(pluginKeyboard, {
   preventDefault: false,
-  listeners: { keyup, keydown, keypress },
+  // listeners: { keyup, keydown, keypress },
 })
 
 function init() {
@@ -16,30 +16,22 @@ function init() {
   x = 0
 }
 
-function update(dt) {
-  if (iskeydown("right")) {
-    x += 100 * dt
-  }
-  if (iskeydown("left")) {
-    x -= 100 * dt
-  }
-}
-
 function draw() {
   cls(color)
   text(10, 10, "HOLDING: " + (holding ? "YES" : "NO"), color + 3)
-
   circfill(x, CENTERY, 30, 3)
 }
 
 function keydown(key) {
-  if ("space" === key) {
+  // if key == space
+  if (" " === key) {
     holding = true
   }
 }
 
 function keyup(key) {
-  if ("space" === key) {
+  // if key == space
+  if (" " === key) {
     holding = false
   }
 }
